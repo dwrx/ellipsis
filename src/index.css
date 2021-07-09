@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f2f2f2;
+}
+
+h2 {
+  font-size: 42px;
+  color: #272a2e;
+}
+
+h2 span {
+  color: #949da7;
+}
+
+.chart-wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.stats-block {
+  box-shadow: 0 100px 80px rgb(0 0 0 / 2%),
+    0 41.7776px 33.4221px rgb(0 0 0 / 2%), 0 22.3363px 17.869px rgb(0 0 0 / 3%),
+    0 12.5216px 10.0172px rgb(0 0 0 / 3%), 0 6.6501px 5.32008px rgb(0 0 0 / 4%),
+    0 2.76726px 2.21381px rgb(0 0 0 / 7%);
+}
