@@ -47,3 +47,9 @@ h2 span {
   font-weight: bold;
   font-size: 20px;
 }
+
+.info-label {
+  text-align: center;
+  padding: 50px;
+  font-size: 20px;
+}
