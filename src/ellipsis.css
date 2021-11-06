@@ -1,26 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 
-body {
+body.ellipsis {
   font-family: "Roboto", sans-serif;
   background: #f2f2f2;
 }
 
-h2 {
+.ellipsis h2 {
   font-size: 42px;
   color: #272a2e;
 }
 
-h2 span {
+.ellipsis h2 span {
   color: #949da7;
 }
 
-.row,
-.chart-wrapper {
+.ellipsis .row,
+.ellipsis .chart-wrapper {
   width: 1000px;
   margin: 0 auto;
 }
 
-.block {
+.ellipsis block {
   display: inline-block;
   min-width: 20%;
   max-width: 20%;
@@ -33,22 +33,22 @@ h2 span {
   text-align: center;
 }
 
-.block h4 {
+.ellipsis .block h4 {
   font-size: 18px;
   font-weight: 400;
   color: #949da7;
 }
 
-.block hr {
+.ellipsis .block hr {
   max-width: 50%;
 }
 
-.block p {
+.ellipsis .block p {
   font-weight: bold;
   font-size: 20px;
 }
 
-.info-label {
+.ellipsis .info-label {
   text-align: center;
   padding: 50px;
   font-size: 20px;

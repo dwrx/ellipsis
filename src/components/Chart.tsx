@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const API = "";
+import "../ellipsis.css";
+
+const API = "miso.one";
 
 function Chart() {
   const [error, setError] = useState<null | { message: string }>(null);
@@ -81,6 +83,10 @@ function Chart() {
           setError(error);
         }
       );
+    document.body.className = "ellipsis";
+    return () => {
+      document.body.className = "";
+    };
   }, []);
 
   if (error) {
