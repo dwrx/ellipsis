@@ -20,7 +20,7 @@ body.ellipsis {
   margin: 0 auto;
 }
 
-.ellipsis block {
+.ellipsis .block {
   display: inline-block;
   min-width: 20%;
   max-width: 20%;
