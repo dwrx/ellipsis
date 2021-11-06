@@ -1,9 +1,18 @@
 const express = require("express");
-const router = express.Router();
 const path = require("path");
+const fs = require("fs");
+
+const router = express.Router();
+const indexPath = path.resolve("./build/index.html");
 
 router.get("/", async function (req, res) {
-  res.status(200).sendFile(path.resolve("./build/index.html"));
+  fs.stat(indexPath, function (err, stats) {
+    if (stats) {
+      res.status(200).sendFile(indexPath);
+    } else {
+      res.send("Miso One.");
+    }
+  });
 });
 
 module.exports = router;
