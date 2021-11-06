@@ -44,7 +44,7 @@ function Stats() {
           <hr />
           <p>{(stats.month / 12).toFixed(2)}%</p>
         </div>
-        <div className="block">
+        <div className="block hidden-mobile">
           <h4>
             30 days average
             <br /> EPS APY

@@ -17,6 +17,7 @@ body.ellipsis {
 .ellipsis .row,
 .ellipsis .chart-wrapper {
   width: 1000px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -52,4 +53,18 @@ body.ellipsis {
   text-align: center;
   padding: 50px;
   font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .ellipsis .hidden-mobile {
+    display: none;
+  }
+
+  .ellipsis h2 {
+    font-size: 24px;
+  }
+
+  .ellipsis .block {
+    max-width: 50% !important;
+  }
 }
