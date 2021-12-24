@@ -22,12 +22,17 @@ router.use((req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
   return next();
 });
-router.get("/", function (req, res) {
-  if (ENV === "production") {
-    res.sendFile(path.join(__dirname, "../", "index.html"));
-  } else {
-    res.sendFile(path.join(__dirname, "index.html"));
-  }
+
+const indexPath = path.resolve("./build/index.html");
+
+router.get("/", async function (req, res) {
+  fs.stat(indexPath, function (err, stats) {
+    if (stats) {
+      res.status(200).sendFile(indexPath);
+    } else {
+      res.send("Miso One.");
+    }
+  });
 });
 router.get(["/voxpunks", "/voxpunks-rarity"], function (req, res) {
   console.log("New visit #", ++visits);
