@@ -5,7 +5,6 @@ const axios = require("axios");
 
 const router = express.Router();
 
-const ENV = process.env.NODE_ENV || "production";
 const updatePrices = require("../controllers/voxpunks");
 const ranks = require("../config/voxpunks-ranks.json");
 setInterval(async () => {
@@ -16,8 +15,6 @@ setInterval(async () => {
   }
 }, 30000);
 
-let visits = 0;
-
 router.use((req, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
   return next();
@@ -25,7 +22,7 @@ router.use((req, res, next) => {
 
 const indexPath = path.resolve("./build/index.html");
 
-router.get("/", async function (req, res) {
+router.get(["/voxpunks", "/voxpunks-rarity"], function (req, res) {
   fs.stat(indexPath, function (err, stats) {
     if (stats) {
       res.status(200).sendFile(indexPath);
@@ -34,24 +31,24 @@ router.get("/", async function (req, res) {
     }
   });
 });
-router.get(["/voxpunks", "/voxpunks-rarity"], function (req, res) {
-  console.log("New visit #", ++visits);
-  res.sendFile(path.join(__dirname, "../miso-ui", "build", "voxpunks.html"));
-});
+
 router.get("/api/v1/get-listings/magiceden", async (req, res) => {
   console.log(new Date(), "[API] Get magiceden listings");
-  fs.readFile("./listings/vox-punks.json", (err, data) => {
-    if (err) {
-      console.error("[API] Cannot get magiceden listings", err.message);
+  fs.readFile(
+    path.resolve(__dirname, "../listings/vox-punks.json"),
+    (err, data) => {
+      if (err) {
+        console.error("[API] Cannot get magiceden listings", err.message);
+      }
+      let punks = [];
+      try {
+        punks = JSON.parse(data.toString());
+      } catch (e) {
+        console.error("[API] Cannot parse json with magiceden listings");
+      }
+      return res.json({ success: true, punks: punks });
     }
-    let punks = [];
-    try {
-      punks = JSON.parse(data.toString());
-    } catch (e) {
-      console.error("[API] Cannot parse json with magiceden listings");
-    }
-    return res.json({ success: true, punks: punks });
-  });
+  );
 });
 router.get("/api/v1/get-tokens-by-address", async (req, res) => {
   console.log(new Date(), "[API] Get tokens by address");
