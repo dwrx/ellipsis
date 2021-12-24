@@ -19,9 +19,7 @@ export default function VoxpunksRarity() {
       return;
     }
     axios
-      .get(
-        "http://localhost:8200/api/v1/get-tokens-by-address?address=" + address
-      )
+      .get("https://miso.one/api/v1/get-tokens-by-address?address=" + address)
       .then(function (response) {
         setError(null);
         if (response.data && response.data.punks) {

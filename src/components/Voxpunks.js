@@ -17,7 +17,7 @@ function Voxpunks() {
 
   const fetchAdventureCards = () => {
     setIsLoaded(false);
-    fetch(`http://localhost:8200/api/v1/get-listings/magiceden`)
+    fetch(`https://miso.one/api/v1/get-listings/magiceden`)
       .then((res) => res.json())
       .then(
         (result) => {
