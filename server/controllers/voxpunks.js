@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const axios = require("axios");
 const vox = require("../config/voxpunks-rarity.json");
 const ranks = require("../config/voxpunks-ranks.json");
@@ -24,12 +25,19 @@ module.exports = async function updatePrices(skip = 0, limit = 500) {
     updatePrices(limit, limit + 500);
   } else {
     console.log(new Date(), "Updated all prices.");
-    fs.writeFile("./listings/vox-punks.json", JSON.stringify(PUNKS), (err) => {
-      if (err) {
-        console.error("Cannot write file with vox punks to disk:", err.message);
+    fs.writeFile(
+      path.resolve(__dirname, "../listings/vox-punks.json"),
+      JSON.stringify(PUNKS),
+      (err) => {
+        if (err) {
+          console.error(
+            "Cannot write file with vox punks to disk:",
+            err.message
+          );
+        }
+        PUNKS = [];
       }
-      PUNKS = [];
-    });
+    );
   }
 };
 const getParsedAttributes = (attributes) => {
