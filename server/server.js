@@ -17,6 +17,7 @@ if (ENV === "development") {
 
 app.use("", require("./routes/miso"));
 app.use("/eps", require("./routes/eps"));
+app.use("", require("./routes/voxpunks"));
 
 app.listen(PORT, () => {
   console.log(`Starting web server at http://127.0.0.1:${PORT}`);
